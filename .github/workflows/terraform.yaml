@@ -2,12 +2,23 @@ on:
   workflow_dispatch:
     inputs:
       terraform_directory:
+        description: 'Terraform config directory'
         type: string
         default: './terraform'
+      terraform_action:
+        description: 'Terraform plan, apply or destroy'
+        required: true
+        type: choice
+        options:
+          - plan
+          - plan-destroy
+          - apply
+          - destroy
+        default: 'plan'
 
 jobs:
 
-  build:
+  terraform-deploy:
     permissions:
       id-token: write
       contents: read
@@ -40,4 +51,17 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
-        run: terraform plan
+        if: ${{ inputs.terraform_action == 'plan' || inputs.terraform_action == 'apply' }}
+        run: terraform plan -out=tfplan
+
+      - name: Terraform plan destroy
+        if: ${{ inputs.terraform_action == 'destroy' }}
+        run: terraform plan -destroy
+
+      - name: Terraform apply
+        if: ${{ inputs.terraform_action == 'apply' }}
+        run: terraform apply tfplan
+
+      - name: Terraform destroy
+        if: ${{ inputs.terraform_action == 'destroy' }}
+        run: terraform destroy -auto-approve
