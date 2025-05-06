@@ -15,10 +15,6 @@ on:
           - apply
           - destroy
         default: 'plan'
-      terraform_state_storage:
-        description: 'Storage account for Terraform state'
-        required: true
-        type: string
 
 jobs:
 
