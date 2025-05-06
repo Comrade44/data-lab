@@ -55,7 +55,7 @@ jobs:
         run: terraform plan -out=tfplan
 
       - name: Terraform plan destroy
-        if: ${{ inputs.terraform_action == 'destroy' }}
+        if: ${{ inputs.terraform_action == 'plan-destroy' }}
         run: terraform plan -destroy
 
       - name: Terraform apply
