@@ -15,6 +15,10 @@ on:
           - apply
           - destroy
         default: 'plan'
+      terraform_state_storage:
+        description: 'Storage account for Terraform state'
+        required: true
+        type: string
 
 jobs:
 
@@ -48,7 +52,11 @@ jobs:
           terraform_version: 1.11.0
       
       - name: Terraform init
-        run: terraform init
+        run: |
+          terraform init \
+          -backend-config=storage_account_name=${{ secrets.tf_state_storage_account_name }}\
+          -backend-config=container_name=${{ secrets.tf_state_storage_account_container_name}}\
+          -backend-config=key=aks-lab.tfstate
 
       - name: Terraform plan
         if: ${{ inputs.terraform_action == 'plan' || inputs.terraform_action == 'apply' }}
