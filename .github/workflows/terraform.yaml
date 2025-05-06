@@ -6,14 +6,15 @@ on:
         default: './terraform'
 
 jobs:
-  defaults:
-    run:
-      working-directory: ${{ github.event.inputs.terraform_directory }}
 
   build:
     permissions:
       id-token: write
       contents: read
+
+    defaults:
+      run:
+        working-directory: ${{ github.event.inputs.terraform_directory }}
 
     runs-on: ubuntu-latest
 
