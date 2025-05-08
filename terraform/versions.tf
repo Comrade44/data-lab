@@ -6,9 +6,11 @@ terraform {
       version = ">= 4.27.0"
     }
   }
+  backend "azurerm" {
+    key = "lab.tfstate"
+  }
 }
 
 provider "azurerm" {
-  subscription_id = var.arm_subscription_id
   features {}
 }
