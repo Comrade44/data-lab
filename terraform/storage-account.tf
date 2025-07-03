@@ -15,6 +15,18 @@ resource "azurerm_storage_account" "lab-stg" {
   resource_group_name      = azurerm_resource_group.rg-storage.name
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  blob_properties {
+    container_delete_retention_policy {
+      days = 7
+    }
+    delete_retention_policy {
+      days = 7
+    }
+    versioning_enabled = true
+    restore_policy {
+      days = 6
+    }
+  }
 }
 
 resource "azurerm_storage_container" "container-1" {
