@@ -26,6 +26,8 @@ resource "azurerm_storage_account" "lab-stg" {
     restore_policy {
       days = 6
     }
+    change_feed_enabled           = true
+    change_feed_retention_in_days = 7
   }
 }
 
