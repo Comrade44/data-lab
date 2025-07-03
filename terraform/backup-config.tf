@@ -16,3 +16,11 @@ resource "azurerm_data_protection_backup_policy_blob_storage" "blob-backup-polic
     ignore_changes = [backup_repeating_time_intervals]
   }
 }
+
+resource "azurerm_data_protection_backup_instance_blob_storage" "lab-stg-blob-policy-assignment" {
+  name               = "lab-stg-blob-policy-assignment"
+  location           = azurerm_resource_group.rg-backup.location
+  vault_id           = azurerm_data_protection_backup_vault.backup-vault.id
+  storage_account_id = azurerm_storage_account.lab-stg.id
+  backup_policy_id   = azurerm_data_protection_backup_policy_blob_storage.blob-backup-policy.id
+}
