@@ -5,6 +5,7 @@ resource "azurerm_role_assignment" "vault-contributor" {
 }
 
 resource "azurerm_data_protection_backup_policy_blob_storage" "blob-backup-policy" {
-  name     = "blob-backup-policy"
-  vault_id = azurerm_data_protection_backup_vault.backup-vault.id
+  name                             = "blob-backup-policy"
+  vault_id                         = azurerm_data_protection_backup_vault.backup-vault.id
+  vault_default_retention_duration = "P2D"
 }
