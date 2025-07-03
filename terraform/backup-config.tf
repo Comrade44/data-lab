@@ -5,12 +5,12 @@ resource "azurerm_role_assignment" "vault-contributor" {
 }
 
 resource "azurerm_data_protection_backup_policy_blob_storage" "blob-backup-policy" {
-  name                                   = "blob-backup-policy"
-  vault_id                               = azurerm_data_protection_backup_vault.backup-vault.id
-  operational_default_retention_duration = "P1D"
-  time_zone                              = "Coordinated Universal Time"
-  vault_default_retention_duration       = "P90D"
-  backup_repeating_time_intervals        = ["R/${timestamp()}/P5M"]
+  name     = "blob-backup-policy"
+  vault_id = azurerm_data_protection_backup_vault.backup-vault.id
+  #  operational_default_retention_duration = "P1D"
+  time_zone                        = "Coordinated Universal Time"
+  vault_default_retention_duration = "P90D"
+  backup_repeating_time_intervals  = ["R/${timestamp()}/P5M"]
 
   lifecycle {
     ignore_changes = [backup_repeating_time_intervals]
