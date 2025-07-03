@@ -8,5 +8,5 @@ resource "azurerm_data_protection_backup_policy_blob_storage" "blob-backup-polic
   name                             = "blob-backup-policy"
   vault_id                         = azurerm_data_protection_backup_vault.backup-vault.id
   vault_default_retention_duration = "P2D"
-  backup_repeating_time_intervals  = "R/PT1D/2025-07-04T01:30:00"
+  backup_repeating_time_intervals  = ["R/PT1D/2025-07-04T01:30:00"]
 }
