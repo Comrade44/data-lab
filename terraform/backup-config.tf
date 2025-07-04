@@ -29,7 +29,7 @@ resource "azurerm_data_protection_backup_instance_blob_storage" "lab-stg-blob-po
 resource "azurerm_backup_policy_file_share" "container-2-snapshot" {
   name                = "container-2-snapshot"
   resource_group_name = azurerm_resource_group.rg-backup.name
-  recovery_vault_name = azurerm_data_protection_backup_vault.backup-vault.name
+  recovery_vault_name = azurerm_recovery_services_vault.files-vault.name
   backup {
     frequency = "Daily"
     time      = "23:00"
