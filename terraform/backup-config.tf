@@ -5,9 +5,10 @@ resource "azurerm_role_assignment" "vault-contributor" {
 }
 
 resource "azurerm_role_assignment" "rsv-contributor" {
+  depends_on = [ azurerm_recovery_services_vault.files-vault ]
   scope                = azurerm_storage_account.lab-stg.id
   role_definition_name = "Storage Account Backup Contributor"
-  principal_id         = azurerm_recovery_services_vault.files-vault.identity.principal_id
+  principal_id         = azurerm_recovery_services_vault.files-vault.identity[0].principal_id
 }
 
 resource "azurerm_data_protection_backup_policy_blob_storage" "blob-backup-policy" {
