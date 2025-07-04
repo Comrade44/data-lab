@@ -4,7 +4,7 @@ resource "azurerm_role_assignment" "vault-contributor" {
   principal_id         = azurerm_data_protection_backup_vault.backup-vault.identity[0].principal_id
 }
 
-resource "azurerm_role_assignment" "vault-contributor" {
+resource "azurerm_role_assignment" "rsv-contributor" {
   scope                = azurerm_storage_account.lab-stg.id
   role_definition_name = "Storage Account Backup Contributor"
   principal_id         = azurerm_recovery_services_vault.files-vault.identity[0].principal_id
