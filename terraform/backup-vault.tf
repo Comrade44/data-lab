@@ -9,6 +9,7 @@ resource "azurerm_data_protection_backup_vault" "backup-vault" {
   location            = azurerm_resource_group.rg-backup.location
   datastore_type      = "VaultStore"
   redundancy          = "LocallyRedundant"
+  soft_delete         = "Off"
   identity {
     type = "SystemAssigned"
   }
