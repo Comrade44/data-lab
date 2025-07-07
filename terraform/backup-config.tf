@@ -47,6 +47,12 @@ resource "azurerm_backup_policy_file_share" "container-2-snapshot" {
   }
 }
 
+resource "azurerm_backup_container_storage_account" "lab-stg" {
+  resource_group_name = azurerm_resource_group.rg-backup.name
+  recovery_vault_name = azurerm_recovery_services_vault.files-vault.name
+  storage_account_id  = azurerm_storage_account.lab-stg.id
+}
+
 resource "azurerm_backup_protected_file_share" "container-2" {
   resource_group_name       = azurerm_resource_group.rg-backup.name
   recovery_vault_name       = azurerm_recovery_services_vault.files-vault.name
