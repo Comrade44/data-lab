@@ -22,12 +22,14 @@ resource "azurerm_storage_account" "lab-stg" {
     delete_retention_policy {
       days = 7
     }
-    versioning_enabled = true
-    restore_policy {
-      days = 6
+#    versioning_enabled = true
+#    change_feed_enabled           = true
+#    change_feed_retention_in_days = 7
+  }
+  share_properties {
+    retention_policy {
+      days = 7
     }
-    change_feed_enabled           = true
-    change_feed_retention_in_days = 7
   }
 }
 
