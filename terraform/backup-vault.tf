@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "rg-backup" {
 }
 
 resource "azurerm_data_protection_backup_vault" "backup-vault" {
-  name                = "backup-vault"
+  name                = "backup-vault-${random_string.storage-name.result}"
   resource_group_name = azurerm_resource_group.rg-backup.name
   location            = azurerm_resource_group.rg-backup.location
   datastore_type      = "VaultStore"

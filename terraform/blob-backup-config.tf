@@ -10,7 +10,7 @@ resource "azurerm_data_protection_backup_policy_blob_storage" "blob-backup-polic
   #  operational_default_retention_duration = "P1D"
   time_zone                        = "Coordinated Universal Time"
   vault_default_retention_duration = "P90D"
-  backup_repeating_time_intervals  = ["R/${timestamp()}/PT5M"]
+  backup_repeating_time_intervals  = ["R/${timestamp()}/PT55M"]
 
   lifecycle {
     ignore_changes = [backup_repeating_time_intervals]
