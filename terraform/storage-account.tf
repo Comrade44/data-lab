@@ -22,7 +22,7 @@ resource "azurerm_storage_account" "lab-stg" {
     delete_retention_policy {
       days = 7
     }
-#    versioning_enabled = true
+    versioning_enabled = true
 #    change_feed_enabled           = true
 #    change_feed_retention_in_days = 7
   }
