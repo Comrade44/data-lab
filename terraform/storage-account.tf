@@ -23,8 +23,6 @@ resource "azurerm_storage_account" "lab-stg" {
       days = 7
     }
     versioning_enabled = true
-#    change_feed_enabled           = true
-#    change_feed_retention_in_days = 7
   }
   share_properties {
     retention_policy {
