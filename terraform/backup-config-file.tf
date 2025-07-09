@@ -1,11 +1,3 @@
-#resource "azurerm_role_assignment" "rsv-contributor" {
-#  depends_on = [ azurerm_recovery_services_vault.files-vault ]
-#  scope                = azurerm_storage_account.lab-stg.id
-#  role_definition_name = "Storage Account Backup Contributor"
-#  principal_id         = azurerm_recovery_services_vault.files-vault.identity[0].principal_id
-#}
-
-
 
 resource "azurerm_backup_policy_file_share" "container-2-snapshot" {
   name                = "container-2-snapshot"
