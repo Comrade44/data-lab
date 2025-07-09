@@ -1,6 +1,6 @@
 
 resource "azurerm_data_protection_backup_policy_blob_storage" "blob-backup-policy-vaulted" {
-  name     = "blob-backup-policy"
+  name     = "blob-backup-policy-vaulted"
   vault_id = azurerm_data_protection_backup_vault.backup-vault.id
   time_zone                        = "Coordinated Universal Time"
   vault_default_retention_duration = "P90D"
