@@ -51,3 +51,9 @@ resource "azurerm_storage_share" "container-2" {
   quota              = 2
   storage_account_id = azurerm_storage_account.lab-stg.id
 }
+
+resource "azurerm_storage_share" "container-3" {
+  name               = "container-3"
+  quota              = 2
+  storage_account_id = azurerm_storage_account.lab-stg.id
+}
